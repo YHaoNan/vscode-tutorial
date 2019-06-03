@@ -10,14 +10,53 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:ext.getCurrentPath",
+		"onCommand:ext.getCurrentPathWithoutBuiltInCommand"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
-			"command": "extension.helloWorld",
-			"title": "Hello World"
-		}]
+			"command": "ext.getCurrentPath",
+			"title": "Get Current Path",
+			"icon": {
+				"dark": "res/dark/copy_file.svg",
+				"light": "res/light/copy_file.svg"
+			}
+		},{
+			"command": "ext.getCurrentPathWithoutBuiltInCommand",
+			"title": "Get Current Path Without Built-In Command"
+		}],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "ext.getCurrentPath",
+					"when": "editorIsOpen"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "ext.getCurrentPath",
+					"group": "navigation",
+					"when": "editorIsOpen"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "ext.getCurrentPath",
+					"group": "navigation",
+					"when": "editorIsOpen"
+				}
+			]
+		},
+		"keybindings":[
+			{
+				"command": "ext.getCurrentPath",
+				"windows": "ctrl+shift+alt+g",
+				"linux": "ctrl+shift+alt+g",
+				"mac": "cmd+shift+alt+g",
+				"when": "editorIsOpen"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

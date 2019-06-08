@@ -1,0 +1,26 @@
+{
+    "Bf_Loop": {
+		"scope": "brainfuck",
+		"prefix": "l",
+		"body": [
+			"[ ${1:loop body} ]"
+		],
+		"description": "Create a loop body"
+	},
+	"Bf_Jump_In_Unit":{
+		"scope": "brainfuck",
+		"prefix": "u",
+		"body": [
+			"> $1 <"
+		],
+		"description": "Create a unit jump body"
+	},
+	"Bf_Jump_In_Unit_And_Loop":{
+		"scope": "brainfuck",
+		"prefix": "ul",
+		"body": [
+			"[ > $1 < $2 ]"
+		],
+		"description": "Create a unit jump body in loop"
+	}
+}

@@ -1,0 +1,72 @@
+{
+  "name": "vsc-extensions-tutorial-7",
+  "displayName": "vsc-extensions-tutorial-7",
+  "description": "Translate English to Chinese.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.35.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Translator",
+        "properties": {
+          "ts.to": {
+            "type": "string",
+            "default": "zh",
+            "description": "The language that you wanna translate to"
+          },
+          "ts.appid": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "default": null,
+            "description": "Your appid"
+          },
+          "ts.key": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": null,
+            "description": "Your key"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "ns.translate",
+        "title": "Translate"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "tslint": "^5.12.1",
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "blueimp-md5": "^2.10.0",
+    "md5-typescript": "^1.0.5",
+    "qs": "^6.7.0"
+  }
+}

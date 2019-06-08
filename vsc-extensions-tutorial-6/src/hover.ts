@@ -8,9 +8,9 @@ export class BrainfuckHoverProvider implements vscode.HoverProvider{
         const opt = document.lineAt(position.line).text.charAt(position.character);
         const wordRange = document.getWordRangeAtPosition(position,new RegExp('\\'+opt+'+'));
 
-        if(opt=='+' || opt=='-')
+        if((opt=='+' || opt=='-')&&vscode.workspace.getConfiguration().get<boolean>('bf.openOptCounter'))
             return wordRange?new vscode.Hover(new vscode.MarkdownString('### BF Opt Counter  \n\n * **Opt: `'+opt+'`**\n\n* **Length: `'+(wordRange.end.character-wordRange.start.character)+'`**')):null;
-        else if(opt=='[' || opt==']'){
+        else if((opt=='[' || opt==']')&&vscode.workspace.getConfiguration().get<boolean>('bf.openLoopJump')){
             const map = util.getLoopOptPairMap(document);
             const target = util.getMatchedOpt(map,position);
             if(target)

@@ -1,0 +1,13 @@
+{
+  "name": "ufile",
+  "version": "1.0.2",
+  "main": "index.js",
+  "dependencies": {
+    "streamifier": "*",
+    "request": "*",
+    "utf8": "*",
+    "multimap": "*",
+    "mime": "*",
+    "underscore": "*"
+  }
+}

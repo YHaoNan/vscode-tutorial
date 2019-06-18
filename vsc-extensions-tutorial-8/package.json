@@ -1,0 +1,72 @@
+{
+  "name": "vsc-extensions-tutorial-8",
+  "displayName": "vsc-extensions-tutorial-8",
+  "description": "Image uploader for markdown.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.35.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:lilpig.pickandupload"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration":[
+      {
+        "title": "Image Uploader",
+        "properties": {
+          "img.ucloud_private_key":{
+            "type":"string",
+            "description": "The private key of your ucloud account."
+          },
+          "img.ucloud_public_key":{
+            "type":"string",
+            "description": "The public key of your ucloud account."
+          },
+          "img.bucket_name":{
+            "type":"string",
+            "description": "Your bucket name."
+          },
+          "img.domain":{
+            "type":"string",
+            "description": "The domain of your ufile space."
+          },
+          "img.backupdir":{
+            "type":"string",
+            "description": "The path that the backup of the image your uploaded."
+          },
+          "img.imghandlerpath":{
+            "type":"string",
+            "description": "The path of the script that can compress your pick image."
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "lilpig.pickandupload",
+        "title": "Upload Image"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "tslint": "^5.12.1",
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "ufile": "file://ufile"
+  }
+}

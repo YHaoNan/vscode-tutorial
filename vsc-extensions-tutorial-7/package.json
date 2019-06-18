@@ -44,8 +44,12 @@
     ],
     "commands": [
       {
-        "command": "ns.translate",
+        "command": "ns.translateSelection",
         "title": "Translate"
+      },
+      {
+        "command": "ns.translateComment",
+        "title": "Translate Comment"
       }
     ]
   },

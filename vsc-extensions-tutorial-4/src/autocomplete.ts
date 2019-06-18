@@ -33,8 +33,8 @@ export class BrainfuckCompletionItemProvider implements vscode.CompletionItemPro
                 completion.detail = 'Insert '+matched[1] +' ' + matched[2];
                 //这个是插入的文字，支持SnippetString
                 completion.insertText = insertText;
-                //替换范围 这里设成了从当前单词第第一个位置到当前单词的最后一个位置
-                completion.range = new vscode.Range(position.line,currentTokenFisrtCharIndex,position.line,position.character);
+                //snippet执行完之后的删除操作 这里设成了从当前单词第第一个位置到当前单词的最后一个位置
+                completion.additionalTextEdits = [vscode.TextEdit.delete(new vscode.Range(position.line,currentTokenFisrtCharIndex,position.line,position.character))];
                 
             }
         });

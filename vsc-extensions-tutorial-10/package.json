@@ -1,0 +1,77 @@
+{
+	"name": "vsc-extensions-tutorial-10",
+	"displayName": "vsc-extensions-tutorial-10",
+	"description": "TreeView.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:treeItems"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "my-tree",
+					"title": "My TreeView",
+					"icon": "res/tree.svg"
+				}
+			]
+		},
+		"views": {
+			"my-tree":[
+				{
+					"id": "treeItems",
+					"name": "Tree Items"
+				}
+			]
+		},
+		"menus": {
+			"view/item/context": [
+				{
+					"command": "tree.delete",
+					"when": "view == treeItems && viewItem == fileItems"
+				},
+				{
+					"command": "tree.delete",
+					"when": "view == treeItems && viewItem == dirItems"
+				},
+				{
+					"command": "tree.open",
+					"group": "inline",
+					"when": "view == treeItems && viewItem == fileItems"
+				}
+			]
+			
+		},
+		"commands":[
+			{
+				"command": "tree.delete",
+				"title": "Delete"
+			},
+			{
+				"command": "tree.open",
+				"title": "Open"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}

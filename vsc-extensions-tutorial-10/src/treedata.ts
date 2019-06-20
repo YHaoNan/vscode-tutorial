@@ -12,7 +12,12 @@ export class MyTreeDataProvider implements vscode.TreeDataProvider<MyTreeItem>{
 
 
     getTreeItem(element: MyTreeItem): vscode.TreeItem {
-		return element;
+        element.command = element.collapsibleState == vscode.TreeItemCollapsibleState.None? {
+            command: 'tree.open',
+            arguments: [element],
+            title: 'Open'
+        } : void 0;
+        return element;
     }
     
     delete(element: MyTreeItem){
@@ -27,7 +32,7 @@ export class MyTreeDataProvider implements vscode.TreeDataProvider<MyTreeItem>{
     }
 
     open(element: MyTreeItem){
-        vscode.workspace.openTextDocument(element.path);
+        vscode.window.showTextDocument(vscode.Uri.file(element.path))
     }
 
     refresh(): void {
